@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  spark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spark-image
+    container_name: spark-container
+    environment:
+      - SPARK_MODE=client
+    volumes:
+      - .:/app
+    command: ["spark-submit", "/app/app.py"]
